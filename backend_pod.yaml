@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    app: backend
+  name: backend
+  namespace: snake
+spec:
+  containers:
+  - command:
+    - sleep
+    - 1d
+    image: debian:11-slim
+    name: backend
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

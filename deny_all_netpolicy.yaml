@@ -1,0 +1,9 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: np-backend-deny
+  namespace: snake
+spec:
+  policyTypes:
+    - Egress
+  egress: []
