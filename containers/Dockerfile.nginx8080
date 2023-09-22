@@ -1,0 +1,5 @@
+FROM nginx:latest
+
+COPY db1.html /usr/share/nginx/html/index.html
+COPY default.conf /etc/nginx/conf.d
+EXPOSE 8080
