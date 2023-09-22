@@ -1,10 +1,8 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  creationTimestamp: null
   labels:
     app: db1
-    nginx: "8080"
   name: nginx8080
 spec:
   containers:
