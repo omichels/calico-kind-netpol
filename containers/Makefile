@@ -4,15 +4,19 @@ all:
 	docker build . --file Dockerfile.vault -t nginx-net-policy:vault
 	docker build . --file Dockerfile.nginx8080 -t nginx-net-policy:8080
 
+GENERICPORT = 9090
 9090:
-	sed  's/GENERICPORT/9090/g' default-GENERIC.conf > default_.conf
+	sed  "s/GENERICPORT/$(GENERICPORT)/g" default-GENERIC.conf > default_.conf
+	sed  "s/GENERICPORT/$(GENERICPORT)/g" Dockerfile.nginx-generic_ > Dockerfile.nginx-generic 
 	docker build . --file Dockerfile.nginx-generic -t nginx-net-policy:9090
 	docker tag nginx-net-policy:9090 olivermichelsaldisued/nginx-net-policy:9090
 	docker push olivermichelsaldisued/nginx-net-policy:9090
 	kind load docker-image olivermichelsaldisued/nginx-net-policy:9090
 
+GENERICPORT = 1111
 1111:
-	sed  's/GENERICPORT/1111/g' default-GENERIC.conf > default_.conf
+	sed  "s/GENERICPORT/$(GENERICPORT)/g" default-GENERIC.conf > default_.conf
+	sed  "s/GENERICPORT/$(GENERICPORT)/g" Dockerfile.nginx-generic_ > Dockerfile.nginx-generic 
 	docker build . --file Dockerfile.nginx-generic -t nginx-net-policy:1111
 	docker tag nginx-net-policy:1111 olivermichelsaldisued/nginx-net-policy:1111
 	docker push olivermichelsaldisued/nginx-net-policy:1111

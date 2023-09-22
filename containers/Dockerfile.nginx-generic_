@@ -2,4 +2,4 @@ FROM nginx:latest
 
 COPY db1.html /usr/share/nginx/html/index.html
 COPY default_.conf /etc/nginx/conf.d/default.conf
-EXPOSE 1111
+EXPOSE GENERICPORT
