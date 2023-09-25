@@ -6,7 +6,7 @@ so, this was inspired by Q24 from killer.sh CKA exam simulator.
 egress rule should respect the k8s svc port only. 
 This np should allow access to port 80, but it still blocks.
 
-```
+```yaml
 spec:
   podSelector:
     matchLabels:
@@ -26,8 +26,8 @@ spec:
 
 
 ## Current Behavior
-exposed container port: 80
-k8s svc port: 8080
+exposed container port: 8080
+k8s svc port: 80
 
 access is blocked, we need to allow also port 8080 in the egress rule
 ```yaml
@@ -56,8 +56,27 @@ spec:
 workaround: use the same port for the exposed port and for the svc port.
 
 ## Steps to Reproduce (for bugs)
+
+
+
 1. create a new k8s with kind and Calico as CNI (see git repo 'kind_with_calico')
 2. create pod 'database_db1.yaml', create svc 'db1_service_yaml', svc port 80 is open
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: db1
+  name: db1
+  namespace: snake
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: db1
+```
 3. exec into backend pod and use curl to test 'curl db1'
 4. now remove port 8080 from the networkpolicy
 5. exec into backend pod and use curl to test 'curl db1', access is blocked
