@@ -30,7 +30,7 @@ exposed container port: 80
 k8s svc port: 8080
 
 access is blocked, we need to allow also port 8080 in the egress rule
-'''
+```yaml
 spec:
   podSelector:
     matchLabels:
@@ -48,7 +48,7 @@ spec:
         port: 80
       - protocol: TCP  # removing this port 
         port: 8080     # will wrongly disable access
-'''
+```
 
 
 
