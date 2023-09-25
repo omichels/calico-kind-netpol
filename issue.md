@@ -6,7 +6,7 @@ so, this was inspired by Q24 from killer.sh CKA exam simulator.
 egress rule should respect the k8s svc port only. 
 This np should allow access to port 80, but it still blocks.
 
-'''
+```
 spec:
   podSelector:
     matchLabels:
@@ -22,7 +22,7 @@ spec:
       ports:                        
       - protocol: TCP
         port: 80
-'''
+```
 
 
 ## Current Behavior
