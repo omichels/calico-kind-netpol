@@ -9,7 +9,7 @@ spec:
     matchLabels:
       app: backend
   policyTypes:
-    - Egress                    # policy is only about Egress
+    - Egress                    
   egress:
     -                            
       to:                           
@@ -18,7 +18,17 @@ spec:
             app: db1
       ports:                        
       - protocol: TCP
-        port: 8080
+        port: 80
+#      - protocol: TCP
+#        port: 8080
+    -                            
+      to:                           
+      - podSelector:
+          matchLabels:
+            app: db2
+      ports:                        
+      - protocol: TCP
+        port: 80
     - 
       ports:
       - protocol: UDP

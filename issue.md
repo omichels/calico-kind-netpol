@@ -68,6 +68,6 @@ finding this issue. I think that issue this makes egress policies harder to read
 
 ## Your Environment
 * Calico version v3.26.1
-* Orchestrator version: kind version 0.17.0
+* Orchestrator version: kind version 0.20.0
 * Operating System and version: Ubuntu 22.04.2 LTS
 * Link to your project (optional):

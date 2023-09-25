@@ -2,12 +2,13 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    app: db1
-  name: nginx8080
+    app: vault
+  name: vault
+  namespace: snake
 spec:
   containers:
-  - image: olivermichelsaldisued/nginx-net-policy:8080
-    name: nginx8080
+  - image: docker.io/olivermichelsaldisued/nginx-net-policy:vault
+    name: vault
     resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Always
